@@ -18,10 +18,65 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  background-color: #1E222B;
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+}
+
+div.hamburger-menu {
+  gap: 0.1rem;
+}
+
+div.hamburger {
+  width: 1.5rem;
+  border: solid;
+}
+
+@layer base {
+  .btn {
+    @apply shadow-md py-3 px-6 rounded-md transition duration-300
+  }
+  .btn-blue {
+    @apply text-white
+  }
+  .btn-green {
+    @apply text-white bg-mb-bg-green
+  }
+}
+
+.grid-cols-20 {
+  grid-template-columns: repeat(20, 11rem);
+}
+
+.grid-col-5 {
+  grid-template-columns: repeat(5, 11rem);
+}
+
+.row {
+  grid-template-rows: 70% 23%;
+}
+
+.rows {
+  grid-template-rows: 4rem 3rem;
+}
+
+.scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bec2cc;
+  border-radius: 8px;
+  width: 4px;
 }
