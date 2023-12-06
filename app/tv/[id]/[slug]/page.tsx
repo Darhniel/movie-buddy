@@ -12,6 +12,7 @@ export default function Page({params}) {
 
     useEffect(() => {
         const fetchMedia = async () => {
+
             try {
               const response = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=1f222b58196e6037966d3d9e8dd3521b&language=en-US`);
               const data = await response.json();
@@ -25,7 +26,7 @@ export default function Page({params}) {
           fetchMedia();
     },[])
 
-    const {original_name, backdrop_path, budget, overview, poster_path, release_date, revenue, runtime, vote_average, genres, production_companies} = movie;
+    const {original_name, budget, overview, poster_path, release_date, revenue, runtime, vote_average, genres, production_companies} = movie;
     const date = new Date(release_date);
     const year = date.getFullYear();
     const vote_count = Number(vote_average);
