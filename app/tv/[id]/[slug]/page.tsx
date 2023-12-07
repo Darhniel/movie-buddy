@@ -68,7 +68,7 @@ export default function Page({params}: any) {
             </h2>
             <div className='mb-6 text-mb-gray flex gap-4 items-center justify-center md:justify-start'>
               <span className='border rounded px-2 capitalize'>{media_type}</span>
-              <div className='flex gap-2 items-center'>
+              <div className='flex gap-2 items-center text-xs md:text-base'>
                 {
                   genres &&
                   genres.map((genre) => {
