@@ -48,8 +48,6 @@ export default function Page({params}) {
         </h1>
         <div className="container flex flex-col items-center gap-8 text-center md:flex md:flex-row md:text-start md:gap-16">
           <div className='w-11/12'>
-            <img src="" alt="" className='hidden' />
-            {/* <img className='h-full' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt="" /> */}
             <Image 
               src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
               alt={original_title}
@@ -75,7 +73,7 @@ export default function Page({params}) {
                   genres &&
                   genres.map((genre) => {
                     return(
-                      <span>{`${genre.name} `}</span>
+                      <span key={genre.id}>{`${genre.name} `}</span>
                     )
                   })
                 }
