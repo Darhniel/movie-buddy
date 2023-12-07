@@ -128,7 +128,7 @@ export default function TopRated() {
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={`/movies/tv/${id}`}>
+                                        <Link href={`/tv/tv/${id}`}>
                                             {/* <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={name} title={name} /> */}
                                             <Image 
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}

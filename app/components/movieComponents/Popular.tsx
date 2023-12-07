@@ -49,7 +49,7 @@ export default function Popular() {
     useEffect(() => {
         const fetchMedia = async () => {
           try {
-            const response = await fetch(`https://api.themoviedb.org/3//movie/now_playing?api_key=1f222b58196e6037966d3d9e8dd3521b&language=en-US&page=1`);
+            const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=1f222b58196e6037966d3d9e8dd3521b&language=en-US&page=1`);
             const data = await response.json();
 
             setMovies(data.results);
