@@ -5,8 +5,8 @@ import { unavailable } from '@/app/config/config';
 import Image from 'next/image';
 
 export default function TopRated() {
-    const [movies, setMovies] = useState();
-    const [tv, setTv] = useState();
+    const [movies, setMovies] = useState([]);
+    const [tv, setTv] = useState([]);
 
     const topRatedTab = [
         {
@@ -25,7 +25,7 @@ export default function TopRated() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setTv(undefined)
+            setTv([])
             setMovies(data.results)
         } catch (error) {
             console.error('Error fetching TV Shows: ', error)
@@ -38,8 +38,7 @@ export default function TopRated() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setMovies(undefined)
-            console.log(data.results)
+            setMovies([])
             setTv(data.results)
         } catch (error) {
             console.error('Error fetching TV Shows: ', error)
@@ -67,10 +66,10 @@ export default function TopRated() {
             <div className="container flex gap-8 items-center">
                 <h2 className="font-bold text-2xl py-4  text-white capitalize">top rated</h2>
                 <div className="flex border border-[grey] border-solid rounded-full">
-                    <button onClick={handleMovies} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${movies ? 'grey':""}`}}>
+                    <button onClick={handleMovies} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${movies.length > 0 ? 'grey':""}`}}>
                         Movies
                     </button>
-                    <button onClick={handleTv} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${tv ? 'grey':""}`}}>
+                    <button onClick={handleTv} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${tv.length > 0 ? 'grey':""}`}}>
                         Tv Shows
                     </button>
                 </div>
@@ -87,7 +86,7 @@ export default function TopRated() {
             } */}
             <div className="w-11/12 mx-auto bg-mb-black overflow-auto container scrollbar">                
                 <div className="grid grid-cols-20 gap-8 w-full">
-                    {   movies &&
+                    {   movies.length > 0 &&
                         movies.map((movie: {id: number, title: string, poster_path: string, release_date: string, vote_average: number}) => {
                             const {id, title, poster_path, release_date, vote_average} = movie;
                             return (
@@ -123,7 +122,7 @@ export default function TopRated() {
                             )
                         })
                     }
-                    {   tv &&
+                    {   tv.length > 0 &&
                         tv.map((movie: {id: number, name: string, poster_path: string, first_air_date: string, vote_average: number}) => {
                             const {id, name, poster_path, first_air_date, vote_average} = movie;
                             return (

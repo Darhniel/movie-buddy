@@ -9,7 +9,7 @@ import { unavailable } from '../config/config'
 import Image from 'next/image'
 
 export default function Movies() {
-    const [movies, setMovies] = useState();
+    const [movies, setMovies] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [genre, setGenre] = useState([]); //used to store the origional genre values
@@ -66,7 +66,7 @@ export default function Movies() {
             <div className="container">
                 <h1 className="font-bold text-2xl py-4  text-white capitalize">Movies</h1>
                 {
-                    !movies && 
+                    movies.length <= 0 && 
                     <p>Loading.....</p>
                     // <div className='text-center flex items-center flex-col gap-4 mt-8'>
                     //     <p className='text-red-600'>
@@ -78,7 +78,7 @@ export default function Movies() {
                     // </div>                                  
                 }
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full">
-                    {   movies &&
+                    {   movies.length > 0 &&
                         movies.map((movie: any) => {
                             console.log(movie)
                             const {id, title, name, poster_path, release_date, first_air_date, vote_average} = movie;
@@ -115,7 +115,7 @@ export default function Movies() {
                     }
                 </div>
             </div>
-            {movies &&
+            {movies.length > 0 &&
                 <div className="flex gap-4 justify-center my-4">
                     <button 
                         disabled={currentPage === 1} 

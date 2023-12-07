@@ -6,10 +6,14 @@ import { unavailable, img_500, img_backdrop } from '@/app/config/config';
 import { FaStar } from "react-icons/fa6";
 import Image from 'next/image';
 
-export default function Page({params}) {
+export default function Page({params}: any) {
     const media_type = params.id;
     const id = params.slug;
-    const [movie, setMovie] = useState<{original_title: string, budget: number, overview: string, poster_path: string, release_date: string, revenue: number, runtime: number, genres: {id: number, name: string}[], production_companies: {id: number, logo_path: string, name: string}[], vote_average: number}>({});
+    const [movie, setMovie] = useState<{
+      original_title: string, budget: number, overview: string, poster_path: string, release_date: string, revenue: number, runtime: number, genres: {id: number, name: string}[], production_companies: {id: number, logo_path: string, name: string}[], vote_average: number
+    }>({
+      original_title: "", budget: 0, overview: "", poster_path: "", release_date: "", revenue: 0, runtime: 0, genres: [{id: 0, name: ""}], production_companies: [{id: 0, logo_path: "", name: ""}], vote_average: 0
+    });
 
     useEffect(() => {
       const fetchMedia = async () => {
@@ -78,7 +82,7 @@ export default function Page({params}) {
                   })
                 }
               </div>
-              <span>{runtime ? toHoursAndMinutes(runtime) : ""}</span>
+              <span>{runtime > 0 ? toHoursAndMinutes(runtime) : ""}</span>
             </div>
 
             <div className='flex gap-2 items-center justify-center md:justify-start'>
@@ -87,7 +91,7 @@ export default function Page({params}) {
               </span>
               
               <div className="">
-                <span className='text-3xl text-mb-yellow font-medium'>{vote_average ? vote_average.toFixed(1) : ""}</span>
+                <span className='text-3xl text-mb-yellow font-medium'>{vote_average > 0 ? vote_average.toFixed(1) : ""}</span>
                 <span className='text-lg font-medium text-mb-dark-yellow'>/10</span>
               </div>
               <span className='text-mb-gray'>(TMDb rating)</span>
@@ -98,11 +102,11 @@ export default function Page({params}) {
             </div>
             <p className="text-white font-medium flex flex-col md:block">
               Budget: 
-              <span className="text-mb-gray font-medium">{budget ? ` ${budget.toLocaleString('en-US')}` : "N/A"}</span>
+              <span className="text-mb-gray font-medium">{budget > 0 ? ` ${budget.toLocaleString('en-US')}` : "N/A"}</span>
             </p>
             <p className='text-white font-medium flex flex-col md:block'>
               Revenue: 
-              <span className='text-mb-gray font-medium'>{revenue ? ` ${revenue.toLocaleString('en-US')}` : "N/A"}</span>
+              <span className='text-mb-gray font-medium'>{revenue > 0 ? ` ${revenue.toLocaleString('en-US')}` : "N/A"}</span>
             </p>
             <h2 className='text-white text-lg mt-5 font-medium'>Production Companies:</h2>
             <div className="flex gap-4 mt-4 items-center overflow-auto scrollbar flex-wrap justify-center md:flex-nowrap md:justify-normal">

@@ -5,8 +5,8 @@ import { unavailable } from '@/app/config/config';
 import Image from 'next/image';
 
 export default function TrendingMovies() {
-    const [day, setDay] = useState();
-    const [week, setWeek] = useState();
+    const [day, setDay] = useState([]);
+    const [week, setWeek] = useState([]);
 
     const trendingTab = [
         {
@@ -25,7 +25,7 @@ export default function TrendingMovies() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setWeek(undefined)
+            setWeek([])
             setDay(data.results)
         } catch (error) {
             console.error(`Error fetching Today's Trending Movies and Tv Shows: `, error)
@@ -38,7 +38,7 @@ export default function TrendingMovies() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setDay(undefined)
+            setDay([])
             setWeek(data.results)
         } catch (error) {
             console.error(`Error fetching this week's Movies and TV Shows: `, error)
@@ -66,10 +66,10 @@ export default function TrendingMovies() {
             <div className="container flex gap-8 items-center">
                 <h2 className="font-bold text-2xl py-4  text-white capitalize">trending</h2>
                 <div className="flex border border-[grey] border-solid rounded-full">
-                    <button onClick={handleDay} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${day ? 'grey':""}`}}>
+                    <button onClick={handleDay} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${day.length > 0 ? 'grey':""}`}}>
                         Today
                     </button>
-                    <button onClick={handleWeek} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${week ? 'grey':""}`}}>
+                    <button onClick={handleWeek} className="px-3.5 text-white rounded-full min-h-[28px] font-medium" style={{backgroundColor: `${week.length > 0 ? 'grey':""}`}}>
                         This Week
                     </button>
                 </div>
@@ -86,7 +86,7 @@ export default function TrendingMovies() {
             } */}
             <div className="w-11/12 mx-auto  bg-mb-black overflow-auto container scrollbar">                    
                 <div className="grid grid-cols-20 gap-8 w-full">
-                    {   day &&
+                    {   day.length > 0 &&
                         day.map((movie: {id: number, media_type: string, title: string, name: string, poster_path: string, release_date: string, first_air_date: string, vote_average: number}) => {
                             const {id, media_type, title, name, poster_path, release_date, first_air_date, vote_average} = movie;
                             return (
@@ -121,7 +121,7 @@ export default function TrendingMovies() {
                             )
                         })
                     }
-                    {   week &&
+                    {   week.length > 0 &&
                         week.map((movie: {id: number, title: string, name: string, media_type: string, poster_path: string, release_date: string, first_air_date: string, vote_average: number}) => {
                             const {id, title, name, media_type, poster_path, release_date, first_air_date, vote_average} = movie;
                             return (

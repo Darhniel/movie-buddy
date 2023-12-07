@@ -9,7 +9,7 @@ import { unavailable } from '../config/config';
 import Image from 'next/image';
 
 export default function Tv() {
-    const [tv, setTv] = useState();
+    const [tv, setTv] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [genre, setGenre] = useState([]); //used to store the origional genre values
@@ -52,7 +52,7 @@ export default function Tv() {
             <div className="container">
                 <h1 className="font-bold text-2xl py-4  text-white capitalize">tv shows</h1>
                 {
-                    !tv && 
+                    tv.length <= 0 && 
                     <div className='text-center flex items-center flex-col gap-4 mt-8'>
                         <p className='text-red-600'>
                             Error getting Tv Shows.
@@ -63,7 +63,7 @@ export default function Tv() {
                     </div>                                  
                 }
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full">
-                    {tv &&
+                    {tv.length > 0 &&
                         tv.map((movie: {id: string, title: string, name: string, poster_path: string, release_date: string, first_air_date: string, vote_average: number}) => {
                             const {id, title, name, poster_path, release_date, first_air_date, vote_average} = movie;
                             return (
