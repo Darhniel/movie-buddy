@@ -5,8 +5,8 @@ import { unavailable } from '@/app/config/config';
 import Image from 'next/image';
 
 export default function Popular() {
-    const [movies, setMovies] = useState();
-    const [tv, setTv] = useState();
+    const [movies, setMovies] = useState(undefined);
+    const [tv, setTv] = useState(undefined);
 
     const popularTab = [
         {
@@ -25,7 +25,7 @@ export default function Popular() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setTv(null)
+            setTv(undefined)
             setMovies(data.results)
         } catch (error) {
             console.error('Error fetching TV Shows: ', error)
@@ -38,7 +38,7 @@ export default function Popular() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setMovies(null)
+            setMovies(undefined)
             console.log(data.results)
             setTv(data.results)
         } catch (error) {

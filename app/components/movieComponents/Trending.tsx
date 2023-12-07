@@ -25,7 +25,7 @@ export default function TrendingMovies() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setWeek(null)
+            setWeek(undefined)
             setDay(data.results)
         } catch (error) {
             console.error(`Error fetching Today's Trending Movies and Tv Shows: `, error)
@@ -38,7 +38,7 @@ export default function TrendingMovies() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setDay(null)
+            setDay(undefined)
             setWeek(data.results)
         } catch (error) {
             console.error(`Error fetching this week's Movies and TV Shows: `, error)

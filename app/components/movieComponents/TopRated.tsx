@@ -25,7 +25,7 @@ export default function TopRated() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setTv(null)
+            setTv(undefined)
             setMovies(data.results)
         } catch (error) {
             console.error('Error fetching TV Shows: ', error)
@@ -38,7 +38,7 @@ export default function TopRated() {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setMovies(null)
+            setMovies(undefined)
             console.log(data.results)
             setTv(data.results)
         } catch (error) {
