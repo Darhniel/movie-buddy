@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
+const Genre = ({ genre, setGenre, setPage, type, value, setValue }:{genre: any, setGenre: any, setPage: any, type: string, value: any, setValue: any}) => {
   const fetchGenre = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/genre/${type}/list?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US`
@@ -17,18 +17,18 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
   []);
 
   //Adding a particular genre to the selected array
-  const CategoryAdd = (genres) => {
+  const CategoryAdd = (genres: any) => {
     //first - select everything that's inside of values using the spread operator
     //second - add those genres that are being sent from the non-selected arrays
     setValue([...value, genres]);
     //removing those genres from the non selected array that have been added to the selected array.
-    setGenre(genre.filter((g) => g.id !== genres.id));
+    setGenre(genre.filter((g: any) => g.id !== genres.id));
     setPage(1);
   };
 
   //removing a perticular genre from the selected array
-  const CategoryRemove = (genres) => {
-    setValue(value.filter((g) => g.id !== genres.id));
+  const CategoryRemove = (genres: any) => {
+    setValue(value.filter((g: any) => g.id !== genres.id));
     setGenre([...genre, genres]);
     setPage(1);
   };
@@ -38,7 +38,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
         <div className="">
           <div className="flex flex-wrap">
             {value && //if value exist
-              value.map((Val) => {
+              value.map((Val: any) => {
                 const { id, name } = Val;
                 return (
                   <>
@@ -55,7 +55,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
               })}
 
             {genre && //if genre exist
-              genre.map((Gen) => {
+              genre.map((Gen: any) => {
                 const { id, name } = Gen;
                 return (
                   <>
