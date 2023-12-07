@@ -59,7 +59,9 @@ export default function Popular() {
         };
     
         fetchMedia();
-      }, []);
+      }, 
+      // eslint-disable-next-line
+      []);
 
     return (
         <>

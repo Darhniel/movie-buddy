@@ -12,20 +12,20 @@ export default function Page({params}) {
     const [movie, setMovie] = useState<{original_name: string, budget: number, overview: string, poster_path: string, release_date: string, revenue: number, runtime: number, genres: {id: number, name: string}[], production_companies: {id: number, logo_path: string, name: string}[], vote_average: number}>({});
 
     useEffect(() => {
-        const fetchMedia = async () => {
-
-            try {
-              const response = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=1f222b58196e6037966d3d9e8dd3521b&language=en-US`);
-              const data = await response.json();
-              console.log(data)
-              setMovie(data)
-            } catch (error) {
-              console.error('Error fetching movies and TV shows:', error);
-            }
-          };
-      
-          fetchMedia();
-    },[])
+      const fetchMedia = async () => {
+        try {
+          const response = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=1f222b58196e6037966d3d9e8dd3521b&language=en-US`);
+          const data = await response.json();
+          console.log(data)
+          setMovie(data)
+        } catch (error) {
+          console.error('Error fetching movies and TV shows:', error);
+        }
+      };
+      fetchMedia();
+    },
+    // eslint-disable-next-line
+    [])
 
     const {original_name, budget, overview, poster_path, release_date, revenue, runtime, vote_average, genres, production_companies} = movie;
     const date = new Date(release_date);

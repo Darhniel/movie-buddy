@@ -58,7 +58,9 @@ export default function TopRated() {
         };
     
         fetchMedia();
-      }, []);
+      }, 
+      // eslint-disable-next-line
+      []);
 
     return (
         <>

@@ -57,7 +57,9 @@ export default function TrendingMovies() {
         };
     
         fetchMedia();
-      }, []);
+      }, 
+      // eslint-disable-next-line
+      []);
 
     return (
         <>

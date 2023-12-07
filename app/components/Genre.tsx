@@ -12,7 +12,9 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
 
   useEffect(() => {
     fetchGenre();
-  }, []);
+  }, 
+  // eslint-disable-next-line
+  []);
 
   //Adding a particular genre to the selected array
   const CategoryAdd = (genres) => {

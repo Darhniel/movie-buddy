@@ -13,7 +13,7 @@ export default function Header() {
                     <Link href={`/`}>
                         <Image 
                             src={`/movie-buddy.png`}
-                            alt=""
+                            alt="logo"
                             width={40}
                             height={10}
                             className="hover:scale-110 cursor-pointer"
