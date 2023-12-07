@@ -2,6 +2,7 @@
 import {useState, useEffect} from 'react'
 import Link from 'next/link'
 import { unavailable } from '@/app/config/config';
+import Image from 'next/image';
 
 export default function TrendingMovies() {
     const [day, setDay] = useState();
@@ -84,15 +85,23 @@ export default function TrendingMovies() {
             <div className="w-11/12 mx-auto  bg-mb-black overflow-auto container scrollbar">                    
                 <div className="grid grid-cols-20 gap-8 w-full">
                     {   day &&
-                        day.map((movie: any) => {
+                        day.map((movie: {id: number, media_type: string, title: string, name: string, poster_path: string, release_date: string, first_air_date: string, vote_average: number}) => {
                             const {id, media_type, title, name, poster_path, release_date, first_air_date, vote_average} = movie;
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
                                         <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="">
-                                            <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title || name} title={title || name} />
+                                            <Image 
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
+                                                alt={title || name}
+                                                title={title || name}
+                                                loading='lazy'
+                                                width={100}
+                                                height={100}
+                                                className='w-full h-full'
+                                            />
                                         </Link>
-                                        <Link href={`/movies/${id}`} className="bg-mb-grey pl-4">
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="bg-mb-grey pl-4">
                                             <h2 
                                                 className='uppercase mt-4 font-bold text-sm text-white'title={title || name}
                                             >{
@@ -111,15 +120,23 @@ export default function TrendingMovies() {
                         })
                     }
                     {   week &&
-                        week.map((movie: any) => {
-                            const {id, title, name, poster_path, release_date, first_air_date, vote_average} = movie;
+                        week.map((movie: {id: number, title: string, name: string, media_type: string, poster_path: string, release_date: string, first_air_date: string, vote_average: number}) => {
+                            const {id, title, name, media_type, poster_path, release_date, first_air_date, vote_average} = movie;
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={`/movies/${id}`} className="">
-                                            <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title || name} title={title || name} />
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="">
+                                            <Image 
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
+                                                alt={title || name}
+                                                title={title || name}
+                                                loading='lazy'
+                                                width={100}
+                                                height={100}
+                                                className='w-full h-full'
+                                            />
                                         </Link>
-                                        <Link href={`/movies/${id}`} className="bg-mb-grey px-4">
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="bg-mb-grey px-4">
                                             <h2 
                                                 className='uppercase mt-4 font-bold text-sm text-white'title={title || name}
                                             >{

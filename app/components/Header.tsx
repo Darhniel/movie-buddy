@@ -1,20 +1,23 @@
 'use client'
 import Link from "next/link"
 import { useState } from 'react'
+import Image from "next/image";
 
 export default function Header() {
     const [mobile, setMobile] = useState(false);
-
-    function menu() {
-        setMobile(!mobile)
-    }
 
     return (
         <header className='bg-mb-black w-full z-10 top-0'>
             <nav className="container flex items-center py-4 justify-between">
                 <div className="py-1">
                     <Link href={`/`}>
-                        <img src="/movie-buddy.png" alt="" className='w-10 hover:scale-110 cursor-pointer'/>
+                        <Image 
+                            src={`/movie-buddy.png`}
+                            alt=""
+                            width={40}
+                            height={10}
+                            className="hover:scale-110 cursor-pointer"
+                        />
                     </Link>
                 </div>
                 <ul className='hidden md:flex flex-1 justify-end items-center gap-12 text-mb-text-blue uppercase font-bold'>

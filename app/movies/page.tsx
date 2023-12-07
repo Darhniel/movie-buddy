@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import Genre from "../components/Genre";
 import useGenre from "../components/useGenre";
 import { unavailable } from '../config/config'
+import Image from 'next/image'
 
 export default function Movies() {
     const [movies, setMovies] = useState();
@@ -34,7 +35,7 @@ export default function Movies() {
           fetchMedia();
     }, [currentPage, genreURL])
 
-    const handlePageChange = (page) => {
+    const handlePageChange = (page: number) => {
         setCurrentPage(page);
     };
     
@@ -85,7 +86,16 @@ export default function Movies() {
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
                                         <Link href={`/movies/movie/${id}`} className="">
-                                            <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title || name} title={title || name} />
+                                            {/* <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title || name} title={title || name} /> */}
+                                            <Image 
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
+                                                alt={title || name}
+                                                title={title || name}
+                                                loading='lazy'
+                                                height={100}
+                                                width={100}
+                                                className='h-full w-full'
+                                            />
                                         </Link>
                                         <div className="bg-mb-grey pl-4 pb-4">
                                             <h2 

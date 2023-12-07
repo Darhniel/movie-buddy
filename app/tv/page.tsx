@@ -5,9 +5,10 @@ import Header from '@/app/components/Header'
 import { useRouter } from 'next/navigation'
 import Genre from "../components/Genre";
 import useGenre from "../components/useGenre";
-import { unavailable } from '../config/config'
+import { unavailable } from '../config/config';
+import Image from 'next/image';
 
-export default function Movies() {
+export default function Tv() {
     const [tv, setTv] = useState();
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +33,7 @@ export default function Movies() {
           fetchMedia();
     }, [currentPage, genreURL])
 
-    const handlePageChange = (page) => {
+    const handlePageChange = (page: number) => {
         setCurrentPage(page);
     };
     
@@ -63,13 +64,20 @@ export default function Movies() {
                 }
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full">
                     {tv &&
-                        tv.map((movie: any) => {
+                        tv.map((movie: {id: string, title: string, name: string, poster_path: string, release_date: string, first_air_date: string, vote_average: number}) => {
                             const {id, title, name, poster_path, release_date, first_air_date, vote_average} = movie;
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={`/tv/tv/${id}`} className="">
-                                            <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title || name} title={title || name} />
+                                        <Link href={`/tv/tv/${id}`}>
+                                            <Image 
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} 
+                                                alt={title || name}
+                                                loading='lazy'
+                                                width={100}
+                                                height={100}
+                                                className='w-full'
+                                            />
                                         </Link>
                                         <div className="bg-mb-grey pl-4">
                                             <h2 

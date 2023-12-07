@@ -2,6 +2,7 @@
 import {useState, useEffect} from 'react'
 import Link from 'next/link'
 import { unavailable } from '@/app/config/config';
+import Image from 'next/image';
 
 export default function TopRated() {
     const [movies, setMovies] = useState();
@@ -72,7 +73,7 @@ export default function TopRated() {
                     </button>
                 </div>
             </div>
-            {
+            {/* {
                 !movies &&
                 <div className='text-center flex items-center flex-col gap-4 my-2'>
                     <p className='text-red-600'>
@@ -81,17 +82,26 @@ export default function TopRated() {
                         Please check your internet connection and try again
                     </p>        
                 </div>
-            }
+            } */}
             <div className="w-11/12 mx-auto bg-mb-black overflow-auto container scrollbar">                
                 <div className="grid grid-cols-20 gap-8 w-full">
                     {   movies &&
-                        movies.map((movie: any) => {
+                        movies.map((movie: {id: number, title: string, poster_path: string, release_date: string, vote_average: number}) => {
                             const {id, title, poster_path, release_date, vote_average} = movie;
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
                                         <Link href={`/movies/movie/${id}`}>
-                                            <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title} title={title} />
+                                            {/* <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title} title={title} /> */}
+                                            <Image 
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
+                                                alt={title}
+                                                title={title}
+                                                loading='lazy'
+                                                width={100}
+                                                height={100}
+                                                className='w-full h-full'
+                                            />
                                         </Link>
                                         <Link href={`/movies/${id}`} className="bg-mb-grey pl-4">
                                             <h2 
@@ -112,13 +122,22 @@ export default function TopRated() {
                         })
                     }
                     {   tv &&
-                        tv.map((movie: any) => {
+                        tv.map((movie: {id: number, name: string, poster_path: string, first_air_date: string, vote_average: number}) => {
                             const {id, name, poster_path, first_air_date, vote_average} = movie;
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
                                         <Link href={`/movies/tv/${id}`}>
-                                            <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={name} title={name} />
+                                            {/* <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={name} title={name} /> */}
+                                            <Image 
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
+                                                alt={name}
+                                                title={name}
+                                                loading='lazy'
+                                                width={100}
+                                                height={100}
+                                                className='w-full h-full'
+                                            />
                                         </Link>
                                         <Link href={`/movies/${id}`} className="bg-mb-grey pl-4">
                                             <h2 
