@@ -94,7 +94,7 @@ export default function Movies() {
                                                 loading='lazy'
                                                 height={100}
                                                 width={100}
-                                                className='h-full w-full'
+                                                className='h-[231px] w-full'
                                             />
                                         </Link>
                                         <div className="bg-mb-grey pl-4 pb-4">

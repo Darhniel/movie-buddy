@@ -57,7 +57,7 @@ div.hamburger {
 }
 
 .row {
-  grid-template-rows: 70% 23%;
+  grid-template-rows: 230px 70px;
 }
 
 .rows {

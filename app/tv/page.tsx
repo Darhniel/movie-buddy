@@ -75,8 +75,8 @@ export default function Tv() {
                                                 alt={title || name}
                                                 loading='lazy'
                                                 width={100}
-                                                height={100}
-                                                className='w-full'
+                                                height={276}
+                                                className='w-full h-[231px]'
                                             />
                                         </Link>
                                         <div className="bg-mb-grey pl-4">
@@ -97,8 +97,8 @@ export default function Tv() {
                     }
                 </div>
             </div>
-            {tv &&
-                <div className="flex gap-4 justify-center mb-4">
+            {tv.length > 0 &&
+                <div className="flex gap-4 justify-center my-4">
                     <button 
                         disabled={currentPage === 1} 
                         onClick={() => handlePageChange(currentPage - 1)}

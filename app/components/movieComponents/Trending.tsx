@@ -85,7 +85,7 @@ export default function TrendingMovies() {
                 </div>
             } */}
             <div className="w-11/12 mx-auto  bg-mb-black overflow-auto container scrollbar">                    
-                <div className="grid grid-cols-20 gap-8 w-full">
+                <div className="grid grid-cols-20 gap-8 w-full mb-2">
                     {   day.length > 0 &&
                         day.map((movie: {id: number, media_type: string, title: string, name: string, poster_path: string, release_date: string, first_air_date: string, vote_average: number}) => {
                             const {id, media_type, title, name, poster_path, release_date, first_air_date, vote_average} = movie;

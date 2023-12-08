@@ -89,7 +89,7 @@ export default function Popular() {
             } */}
             
             <div className="w-11/12 mx-auto bg-mb-black overflow-auto container scrollbar">                
-                <div className="grid grid-cols-20 gap-8 w-full">
+                <div className="grid grid-cols-20 gap-8 w-full mb-2">
                     { movies.length > 0 &&
                         movies.map((movie: {id: number, title: string, poster_path: string, release_date: string, vote_average: number}) => {
                             const {id, title, poster_path, release_date, vote_average} = movie;
