@@ -18,7 +18,7 @@ export default function Page() {
         try {
             const response = await fetch(`https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=1f222b58196e6037966d3d9e8dd3521b&language=en-US&query=${searchText}&page=${currentPage}&include_adult=false`);
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             setContent(data.results);
             setTotalPages(data.total_pages);
             // setSearchText("")
@@ -46,7 +46,7 @@ export default function Page() {
                 <input 
                     type="text" 
                     placeholder="Search for a movie or tv show" 
-                    className="p-4 w-full rounded-md outline-none"
+                    className="p-4 w-full rounded-md outline-none text-black"
                     onChange={(e) => {setSearchText(e.target.value)}}
                 />
                 <button type="button" className="text-white w-16 h-16 bg-mb-grey text-center flex items-center justify-center rounded-md hover:scale-110" onClick={fetchSearch}>

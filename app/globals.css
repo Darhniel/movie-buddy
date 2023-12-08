@@ -16,6 +16,17 @@
   }
 }
 
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../public/fonts/Satoshi-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, p, div, a, button, h2 {
+  font-family: 'Satoshi', sans-serif;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #1E222B;
