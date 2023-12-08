@@ -67,15 +67,14 @@ export default function Movies() {
                 <h1 className="font-bold text-2xl py-4  text-white capitalize">Movies</h1>
                 {
                     movies.length <= 0 && 
-                    <p>Loading.....</p>
-                    // <div className='text-center flex items-center flex-col gap-4 mt-8'>
-                    //     <p className='text-red-600'>
-                    //         Error getting Movies.
-                    //         <br />
-                    //         Please check your internet connection and try again
-                    //     </p>
-                    //     <button onClick={() => router.refresh()} className='bg-red-600 p-2 text-white rounded'>Try Again</button>
-                    // </div>                                  
+                    <div className='text-center flex items-center flex-col gap-4 mt-8'>
+                        <p className='text-red-600'>
+                            Error getting Movies.
+                            <br />
+                            Please check your internet connection and try again
+                        </p>
+                        <button onClick={() => router.refresh()} className='bg-red-600 p-2 text-white rounded'>Try Again</button>
+                    </div>                                  
                 }
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 w-full">
                     {   movies.length > 0 &&

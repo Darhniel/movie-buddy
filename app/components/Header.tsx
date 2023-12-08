@@ -31,7 +31,7 @@ export default function Header() {
                         <Link href={`/tv`}>TV Shows</Link>
                     </li>
                     <li className='cursor-pointer hover:scale-110 text-white'>
-                        <Link href={`/`}>Search</Link>
+                        <Link href={`/search`}>Search</Link>
                     </li>
                 </ul>
                 <div className="hamburger-menu flex flex-col items-end md:hidden flex-1 justify-end" onClick={() => setMobile(!mobile)}>
@@ -52,7 +52,7 @@ export default function Header() {
                         <Link href={`/tv`}>TV Shows</Link>
                     </li>
                     <li className='cursor-pointer border-b pt-2 border-slate-300 md:hover:scale-110 text-white'>
-                        <Link href={`/`}>Search</Link>
+                        <Link href={`/search`}>Search</Link>
                     </li>
                 </ul>
             </div>
