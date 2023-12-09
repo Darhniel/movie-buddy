@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { useState } from 'react'
 import Image from "next/image";
+import logo from '../../public/movie-buddy.png'
 
 export default function Header() {
     const [mobile, setMobile] = useState(false);
@@ -12,7 +13,7 @@ export default function Header() {
                 <div className="py-1">
                     <Link href={`/`}>
                         <Image 
-                            src='/movie-buddy.png'
+                            src={logo}
                             alt="logo"
                             width={40}
                             height={10}
