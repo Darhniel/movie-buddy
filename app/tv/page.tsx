@@ -69,7 +69,7 @@ export default function Tv() {
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={`/tv/tv/${id}`}>
+                                        <Link href={`/tv/tv/${id}`} target='_blank'>
                                             <Image 
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} 
                                                 alt={title || name}
@@ -79,7 +79,7 @@ export default function Tv() {
                                                 className='w-full h-[231px]'
                                             />
                                         </Link>
-                                        <div className="bg-mb-grey pl-4">
+                                        <Link href={`/tv/tv/${id}`} target='_blank' className="bg-mb-grey pl-4 pb-4">
                                             <h2 
                                                 className='uppercase mt-4 font-bold text-sm text-white'title={title || name}
                                             >{
@@ -88,7 +88,7 @@ export default function Tv() {
                                                 }
                                             </h2>
                                             <h2 className='text-white text-sm'>{release_date || first_air_date || 'Invalid Date'}</h2>
-                                        </div>
+                                        </Link>
                                     </div>
                                     <div className='absolute text-center w-12 p-2 rounded-lg top-3 left-2' style={vote_average<=7 ? {backgroundColor: 'white', color: 'black'} : {backgroundColor: '#c2410c', color: 'white'}}>{vote_average.toFixed(1)}</div>
                                 </div>

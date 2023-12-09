@@ -92,7 +92,7 @@ export default function TrendingMovies() {
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="">
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} target='_blank'>
                                             <Image 
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
                                                 alt={title || name}
@@ -103,7 +103,7 @@ export default function TrendingMovies() {
                                                 className='w-full h-full'
                                             />
                                         </Link>
-                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="bg-mb-grey pl-4">
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="bg-mb-grey pl-4"  target='_blank'>
                                             <h2 
                                                 className='uppercase mt-4 font-bold text-sm text-white'title={title || name}
                                             >{
@@ -115,7 +115,7 @@ export default function TrendingMovies() {
                                         </Link>
                                     </div>
                                     <div className='absolute text-center w-12 p-2 rounded-lg top-3 left-2' style={vote_average<=7 ? {backgroundColor: 'white', color: 'black'} : {backgroundColor: '#c2410c', color: 'white'}}>
-                                        <Link href={`/movies/${id}`}>{vote_average.toFixed(1)}</Link>
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} target='_blank'>{vote_average.toFixed(1)}</Link>
                                     </div>
                                 </div>
                             )
@@ -127,7 +127,7 @@ export default function TrendingMovies() {
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="">
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} target='_blank'>
                                             <Image 
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
                                                 alt={title || name}
@@ -138,7 +138,7 @@ export default function TrendingMovies() {
                                                 className='w-full h-full'
                                             />
                                         </Link>
-                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="bg-mb-grey px-4">
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} className="bg-mb-grey px-4"  target='_blank'>
                                             <h2 
                                                 className='uppercase mt-4 font-bold text-sm text-white'title={title || name}
                                             >{
@@ -150,7 +150,7 @@ export default function TrendingMovies() {
                                         </Link>
                                     </div>
                                     <div className='absolute text-center w-12 p-2 rounded-lg top-3 left-2' style={vote_average<=7 ? {backgroundColor: 'white', color: 'black'} : {backgroundColor: '#c2410c', color: 'white'}}>
-                                        <Link href={`/movies/${id}`}>{vote_average.toFixed(1)}</Link>
+                                        <Link href={media_type === "movie" ? `/movies/${media_type}/${id}` : `/tv/${media_type}/${id}`} target='_blank'>{vote_average.toFixed(1)}</Link>
                                     </div>
                                 </div>
                             )

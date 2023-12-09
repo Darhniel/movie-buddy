@@ -92,8 +92,7 @@ export default function TopRated() {
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={`/movies/movie/${id}`}>
-                                            {/* <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title} title={title} /> */}
+                                        <Link href={`/movies/movie/${id}`} target='_blank'>
                                             <Image 
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
                                                 alt={title}
@@ -104,7 +103,7 @@ export default function TopRated() {
                                                 className='w-full h-full'
                                             />
                                         </Link>
-                                        <Link href={`/movies/${id}`} className="bg-mb-grey pl-4">
+                                        <Link href={`/movies/movie/${id}`} className="bg-mb-grey pl-4" target='_blank'>
                                             <h2 
                                                 className='uppercase mt-4 font-bold text-sm text-white'title={title}
                                             >{
@@ -115,7 +114,7 @@ export default function TopRated() {
                                         </Link>
                                     </div>
                                     <div className='absolute text-center w-12 p-2 rounded-lg top-3 left-2' style={vote_average<=7 ? {backgroundColor: 'white', color: 'black'} : {backgroundColor:  '#c2410c', color: 'white'}}>
-                                        <Link href={`/movies/${id}`}>{vote_average.toFixed(1)}</Link>
+                                        <Link href={`/movies/movie/${id}`} target='_blank'>{vote_average.toFixed(1)}</Link>
                                     </div>
                                 </div>
 
@@ -128,8 +127,7 @@ export default function TopRated() {
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={`/tv/tv/${id}`}>
-                                            {/* <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={name} title={name} /> */}
+                                        <Link href={`/tv/tv/${id}`} target='_blank'>
                                             <Image 
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
                                                 alt={name}
@@ -140,7 +138,7 @@ export default function TopRated() {
                                                 className='w-full h-full'
                                             />
                                         </Link>
-                                        <Link href={`/movies/${id}`} className="bg-mb-grey pl-4">
+                                        <Link href={`/tv/tv/${id}`} className="bg-mb-grey pl-4" target='_blank'>
                                             <h2 
                                                 className='uppercase mt-4  text-sm font-bold text-white'title={name}
                                             >{
@@ -151,7 +149,7 @@ export default function TopRated() {
                                         </Link>
                                     </div>
                                     <div className='absolute text-center w-12 p-2 rounded-lg top-3 left-2' style={vote_average<=7 ? {backgroundColor: 'white', color: 'black'} : {backgroundColor:  '#c2410c', color: 'white'}}>
-                                        <Link href={`/movies/${id}`}>{vote_average.toFixed(1)}</Link>
+                                        <Link href={`/tv/tv/${id}`} target='_blank'>{vote_average.toFixed(1)}</Link>
                                     </div>
                                 </div>
                             )

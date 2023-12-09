@@ -110,7 +110,7 @@ export default function Page({params}: any) {
             </p>
             <p className="text-white font-medium flex flex-col md:block">
               Release Date:
-              <span className="text-mb-gray font-medium">{release_date || "N/A"}</span>
+              <span className="text-mb-gray font-medium">{` ${release_date}` || "N/A"}</span>
             </p>
             <h2 className='text-white text-lg mt-5 font-medium'>Production Companies:</h2>
             <div className="flex gap-4 mt-4 items-center overflow-auto scrollbar flex-wrap justify-center md:flex-nowrap md:justify-normal">

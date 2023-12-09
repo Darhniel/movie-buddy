@@ -39,18 +39,18 @@ export default function Movies() {
         setCurrentPage(page);
     };
     
-    const text = setTimeout(() => {
-        return (
-            <div className='text-center flex items-center flex-col gap-4 mt-8'>
-                <p className='text-red-600'>
-                    Error getting Movies.
-                    <br />
-                    Please check your internet connection and try again
-                </p>
-                <button onClick={() => router.refresh()} className='bg-red-600 p-2 text-white rounded'>Try Again</button>
-            </div>
-        )
-    }, 1000);
+    // const text = setTimeout(() => {
+    //     return (
+    //         <div className='text-center flex items-center flex-col gap-4 mt-8'>
+    //             <p className='text-red-600'>
+    //                 Error getting Movies.
+    //                 <br />
+    //                 Please check your internet connection and try again
+    //             </p>
+    //             <button onClick={() => router.refresh()} className='bg-red-600 p-2 text-white rounded'>Try Again</button>
+    //         </div>
+    //     )
+    // }, 1000);
 
     return (
         <>
@@ -84,7 +84,7 @@ export default function Movies() {
                             return (
                                 <div key={id} className='relative'>                            
                                     <div key={id} className='cursor-pointer grid row'>
-                                        <Link href={`/movies/movie/${id}`} className="">
+                                        <Link href={`/movies/movie/${id}`} target='_blank'>
                                             {/* <img className='h-full w-full' loading='lazy' src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable} alt={title || name} title={title || name} /> */}
                                             <Image 
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : unavailable}
@@ -96,7 +96,7 @@ export default function Movies() {
                                                 className='h-[231px] w-full'
                                             />
                                         </Link>
-                                        <div className="bg-mb-grey pl-4 pb-4">
+                                        <Link href={`/movies/movie/${id}`} target='_blank' className="bg-mb-grey pl-4 pb-4">
                                             <h2 
                                                 className='uppercase mt-4 font-bold text-sm text-white'title={title || name}
                                             >{
@@ -105,7 +105,7 @@ export default function Movies() {
                                                 }
                                             </h2>
                                             <h2 className='text-white text-sm'>{release_date || first_air_date || 'Invalid Date'}</h2>
-                                        </div>
+                                        </Link>
                                     </div>
                                     <div className='absolute text-center w-12 p-2 rounded-lg top-3 left-2' style={vote_average<=7 ? {backgroundColor: 'white', color: 'black'} : {backgroundColor: '#c2410c', color: 'white'}}>{vote_average.toFixed(1)}</div>
                                 </div>
