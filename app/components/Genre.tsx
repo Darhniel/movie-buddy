@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 
-const Genre = ({ genre, setGenre, setPage, type, value, setValue }:{genre: any, setGenre: any, setPage: any, type: string, value: any, setValue: any}) => {
+const Genre = ({ genre, setGenre, setPage, type, value, setValue }: { genre: any, setGenre: any, setPage: any, type: string, value: any, setValue: any }) => {
+  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const fetchGenre = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/genre/${type}/list?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US`
+      `https://api.themoviedb.org/3/genre/${type}/list?api_key=${apiKey}&language=en-US`
     );
     const { genres } = await data.json();
     // console.log(genres);
@@ -12,9 +13,9 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }:{genre: any, 
 
   useEffect(() => {
     fetchGenre();
-  }, 
-  // eslint-disable-next-line
-  []);
+  },
+    // eslint-disable-next-line
+    []);
 
   //Adding a particular genre to the selected array
   const CategoryAdd = (genres: any) => {
